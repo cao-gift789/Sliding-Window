@@ -15,7 +15,7 @@ class SlidingWindowJoin:
     # Hàm để thêm dữ liệu vào cửa sổ
     def add_to_window(self, window, data):
         window.append(data)
-        while window and window[0][0] < time.time() - self.time_window:
+        while len(window) > self.window_size:  # Giới hạn số lượng bản ghi trong cửa sổ
             window.popleft()
 
     # Hàm để thực hiện join giữa luồng A và B
